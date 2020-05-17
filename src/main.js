@@ -6,7 +6,7 @@ var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 var randomizeButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
-var viewSavedButton = document.querySelector('.view-saved-button')
+var viewSavedSectButton = document.querySelector('.view-saved-button')
 var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
 var makeOwnCover = document.querySelector('.make-new-button')
@@ -30,10 +30,10 @@ var currentCover;
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
 makeOwnCover.addEventListener('click', goToForm)
-viewSavedButton.addEventListener('click', goToSaved)
+viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
-
+saveCoverButton.addEventListener('click', saveCover)
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -46,13 +46,36 @@ function createRandomCover() {
   return currentCover
 }
 
-function makeFormCover () {
+function makeFormCover() {
   makeNewCover.type = "button"
   showHomeSect();
   hideFormSect();
   pushInputs();
   displayInputs();
-  makeUserCoverObj()
+  makeUserCoverObj();
+  showSaveCoverButton();
+}
+
+function saveCover() {
+  checkForDuplicates(currentCover);
+}
+
+function checkForDuplicates(currentCover){
+  for (var i = 0; i < savedCovers.length; i++){
+    if (currentCover === savedCovers[i]){
+      return alert("You've already saved this cover!")
+    } else {
+      savedCovers.push(currentCover);
+    }
+  }
+}
+
+function showSaveCover() {
+  //when a user clicks on the saved cover button, these two things will happen
+  ////1. it gets pushed to the savedCovers array in data.js.
+  ////2. the poster gets replicated and placed in the savedCovers section (.adjacentHMTL?)
+  ////2a. Consider using css classes of mini-cover and applying it to the covers in the saved cover section
+
 }
 
 function displayInputs() {
@@ -104,18 +127,23 @@ function goToHome() {
   showHomeSect();
   hideHomeButton();
   showRandomizeButton();
-  showSavedButton();
+  showSavedSectButton();
+  showSaveCoverButton();
 }
-
+//Navigation
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
+}
+
+function showSaveCoverButton() {
+  saveCoverButton.classList.remove('hidden')
 }
 
 function showSavedSect() {
   savedSection.classList.remove('hidden')
 }
 
-function showSavedButton() {
+function showSaveButton() {
   savedButton.classList.remove('hidden')
 }
 
@@ -144,7 +172,11 @@ function hideFormSect() {
 }
 
 function showHomeSect() {
-  homeSection.classList.remove('hidden')
+  homeSection.classList.remove('hidden');
+  hideHomeButton();
+  showRandomizeButton();
+  showSaveCoverButton();
+  //should reveal saved button feature
 }
 
 function showFormSect() {
@@ -155,22 +187,28 @@ function hideSavedSect() {
   savedSection.classList.add('hidden')
 }
 
+//Display
 function displayMyCover() {
   coverImage.src = userCoverInput.value
+  return coverImage.src;
 }
 
 function displayMyTitle() {
   coverTitle.innerText = userTitleInput.value
+  return coverTitle.innerText;
 }
 
 function displayMyDesc1() {
   tagLineOne.innerText = userDesc1.value
+  return tagLineOne.innerText;
 }
 
 function displayMyDesc2() {
   tagLineTwo.innerText = userDesc2.value
+  return tagLineTwo.innerText;
 }
 
+//Randomizers
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
   return coverImage.src
@@ -191,16 +229,15 @@ function randomizeTag2() {
   return tagLineTwo.innerText
 }
 
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
 function randomizeImageButton() {
 createRandomCover()
-//coverImage.src = newCover.cover;
 }
 
+//Push Data
 function pushCoverArray() {
   covers.push(userCoverInput.value)
   console.log(covers)
@@ -217,21 +254,3 @@ function pushDesc1() {
 function pushDesc2() {
   descriptors.push(userDesc2.value)
 }
-
-
-//ITERATION 3
-//when a user clicks the make my book button,
-////these things will happen:
-////the cover input will push the value into the covers array
-////the title input will push the value into the titles array
-////the first descriptor and second descriptor will push into the descriptors array (this will be two functions)
-//these values will be used to reassign currentCover using our Cover class constructor;
-//then we can this variable will be displayed on the home page
-// the makeMyCover button will also hide the form Section and show the home Section
-
-/* when a user clicks on a show new random cover button, we want the screen
-to give us a new title, a now image, and new taglines.
-In order to do this, we need to use functions.
-The hint was to maybe change the currentCover variable?
-how can we use the currentCover variable in our current setup?
-*/
