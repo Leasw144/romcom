@@ -21,9 +21,9 @@ var userDesc1 = document.querySelector('.user-desc1')
 var userDesc2 = document.querySelector('.user-desc2')
 
 // We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+// var savedCovers = [
+//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
+// ];
 var currentCover;
 
 // Add your event listeners here 👇
@@ -57,17 +57,16 @@ function makeFormCover() {
 }
 
 function saveCover() {
-  checkForDuplicates(currentCover);
+  checkForDuplicates();
 }
 
-function checkForDuplicates(currentCover){
+function checkForDuplicates(){
   for (var i = 0; i < savedCovers.length; i++){
-    if (currentCover === savedCovers[i]){
+    if (currentCover.id === savedCovers[i].id){
       return alert("You've already saved this cover!")
-    } else {
-      savedCovers.push(currentCover);
-    }
+    } 
   }
+  savedCovers.push(currentCover);
 }
 
 function showSaveCover() {
