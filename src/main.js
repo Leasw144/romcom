@@ -17,6 +17,7 @@ var makeOwnCoverButton = document.querySelector('.make-new-button')
 var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
+var savedCoversDisplaySect = document.querySelector('.saved-covers-section')
 
 //~~~~~~~~~~~Form specific variables~~~~~~~~~~~~~
 var makeNewCover = document.querySelector('.create-new-book-button')
@@ -62,16 +63,43 @@ function makeFormCover() {
 }
 
 function saveCover() {
-  checkForDuplicates();
+  // checkForDuplicates();
+  renderSavedCovers();
 }
+
+
 
 function checkForDuplicates(){
   for (var i = 0; i < savedCovers.length; i++){
     if (currentCover === savedCovers[i]){
-      return alert("You've already saved this cover!")
+      return false
     } 
   }
   savedCovers.push(currentCover);
+}
+
+function renderSavedCovers() {
+  var duplicate = checkForDuplicates();
+  if(duplicate === false) {
+    return alert('You\'ve already saved this!!!')
+  } else { 
+    for(var i = 0; i < savedCovers.length; i++) {
+      var toBePrinted = `<section class="mini-cover">
+          <img class="cover-image" src="${savedCovers[i].cover}">
+            <h2 class="cover-title">${savedCovers[i].title}</h2>
+            <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+            <img class="price-tag" src="./assets/price.png">
+              <img class="overlay" src="./assets/overlay.png">
+          </section>`
+    }
+    
+  } 
+  savedCoversDisplaySect.insertAdjacentHTML('afterbegin', 
+  toBePrinted)
+  //needs to access savedCovers array,
+  //display all of the saved covers
+  //but it needs to have the class of mini-covers 
+
 }
 
 function showSaveCover() {
@@ -117,7 +145,7 @@ function goToForm() {
 }
 
 function goToSaved() {
-  showSavedSect()
+  showSavedSectButton()
   hideFormSect();
   hideHomeSect();
   showHomeButton();
@@ -134,7 +162,7 @@ function goToHome() {
   showSavedSectButton();
   showSaveCoverButton();
 }
-//~~~~~~~~~~~~~~~Navigation~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~Navigation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
 }
@@ -143,7 +171,7 @@ function showSaveCoverButton() {
   saveCoverButton.classList.remove('hidden')
 }
 
-function showSavedSect() {
+function showSavedSectButton() {
   savedSection.classList.remove('hidden')
 }
 
