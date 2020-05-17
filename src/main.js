@@ -1,39 +1,45 @@
 // Create variables targetting the relevant DOM elements here 👇
+
+//~~~~~~~~~~~Current Cover Variables are here~~~~~~
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
-var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
+
+//~~~~~~~~~~`control` class buttons~~~~~~~~~~~~~~~~
 var randomizeButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedSectButton = document.querySelector('.view-saved-button')
-var makeNewButton = document.querySelector('.make-new-button')
 var homeButton = document.querySelector('.home-button')
-var makeOwnCover = document.querySelector('.make-new-button')
+var makeOwnCoverButton = document.querySelector('.make-new-button')
+
+//~~~~~~~~~~~Sections~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
-var hidden = document.querySelector('.hidden')
+var savedCoversDisplaySect = document.querySelector('.saved-covers-section')
+
+//~~~~~~~~~~~Form specific variables~~~~~~~~~~~~~
 var makeNewCover = document.querySelector('.create-new-book-button')
 var userCoverInput = document.querySelector('.user-cover')
 var userTitleInput = document.querySelector('.user-title')
 var userDesc1 = document.querySelector('.user-desc1')
 var userDesc2 = document.querySelector('.user-desc2')
 
-// We've provided a few variables below
-var savedCovers = [
-  new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-];
+//~~~~~~~~~~~Misc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var hidden = document.querySelector('.hidden')
 var currentCover;
+
 
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
-makeOwnCover.addEventListener('click', goToForm)
+makeOwnCoverButton.addEventListener('click', goToForm)
 viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
 saveCoverButton.addEventListener('click', saveCover)
+
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -57,17 +63,43 @@ function makeFormCover() {
 }
 
 function saveCover() {
-  checkForDuplicates(currentCover);
+  // checkForDuplicates();
+  renderSavedCovers();
 }
 
-function checkForDuplicates(currentCover){
+
+
+function checkForDuplicates(){
   for (var i = 0; i < savedCovers.length; i++){
     if (currentCover === savedCovers[i]){
-      return alert("You've already saved this cover!")
-    } else {
-      savedCovers.push(currentCover);
-    }
+      return false
+    } 
   }
+  savedCovers.push(currentCover);
+}
+
+function renderSavedCovers() {
+  var duplicate = checkForDuplicates();
+  if(duplicate === false) {
+    return alert('You\'ve already saved this!!!')
+  } else { 
+    for(var i = 0; i < savedCovers.length; i++) {
+      var toBePrinted = `<section class="mini-cover">
+          <img class="cover-image" src="${savedCovers[i].cover}">
+            <h2 class="cover-title">${savedCovers[i].title}</h2>
+            <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+            <img class="price-tag" src="./assets/price.png">
+              <img class="overlay" src="./assets/overlay.png">
+          </section>`
+    }
+    
+  } 
+  savedCoversDisplaySect.insertAdjacentHTML('afterbegin', 
+  toBePrinted)
+  //needs to access savedCovers array,
+  //display all of the saved covers
+  //but it needs to have the class of mini-covers 
+
 }
 
 function showSaveCover() {
@@ -113,7 +145,7 @@ function goToForm() {
 }
 
 function goToSaved() {
-  showSavedSect()
+  showSavedSectButton()
   hideFormSect();
   hideHomeSect();
   showHomeButton();
@@ -130,7 +162,7 @@ function goToHome() {
   showSavedSectButton();
   showSaveCoverButton();
 }
-//Navigation
+//~~~~~~~~~~~~~~~Navigation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
 }
@@ -139,7 +171,7 @@ function showSaveCoverButton() {
   saveCoverButton.classList.remove('hidden')
 }
 
-function showSavedSect() {
+function showSavedSectButton() {
   savedSection.classList.remove('hidden')
 }
 
@@ -187,7 +219,7 @@ function hideSavedSect() {
   savedSection.classList.add('hidden')
 }
 
-//Display
+//~~~~~~~~~~~~~~~~~~~~~Display~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function displayMyCover() {
   coverImage.src = userCoverInput.value
   return coverImage.src;
@@ -208,7 +240,7 @@ function displayMyDesc2() {
   return tagLineTwo.innerText;
 }
 
-//Randomizers
+//~~~~~~~~~~~~~~~~~~~~Randomizers~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
   return coverImage.src
@@ -237,7 +269,7 @@ function randomizeImageButton() {
 createRandomCover()
 }
 
-//Push Data
+//~~~~~~~~~~~~~~~~~~~~~~~~Push Data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function pushCoverArray() {
   covers.push(userCoverInput.value)
   console.log(covers)
