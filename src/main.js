@@ -1,20 +1,20 @@
 // Create variables targetting the relevant DOM elements here 👇
-//~~~~~~~~~~~Home Cover Variables are here~~~~~~~~~~~~~~~~
+
+//~~~~~~~~~~~Current Cover Variables are here~~~~~~~~~~~~~~~~
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
-var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 
-//~~~~~~~~~~~These buttons under the `control` class~~~~~~~~~~~
+//~~~~~~~~~~`control` class buttons~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var randomizeButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedSectButton = document.querySelector('.view-saved-button')
-
-
-
 var homeButton = document.querySelector('.home-button')
+
 var makeOwnCoverButton = document.querySelector('.make-new-button')
+
+//~~~~~~~~~~~Sections~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
@@ -25,10 +25,6 @@ var userTitleInput = document.querySelector('.user-title')
 var userDesc1 = document.querySelector('.user-desc1')
 var userDesc2 = document.querySelector('.user-desc2')
 
-// We've provided a few variables below
-// var savedCovers = [
-//   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
-// ];
 var currentCover;
 
 // Add your event listeners here 👇
