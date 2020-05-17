@@ -134,7 +134,7 @@ function goToHome() {
   showSavedSectButton();
   showSaveCoverButton();
 }
-//Navigation
+//~~~~~~~~~~~~~~~Navigation~~~~~~~~~~~~~~~~~~~~~~~~~~
 function hideSaveCoverButton() {
   saveCoverButton.classList.add('hidden')
 }
@@ -191,7 +191,7 @@ function hideSavedSect() {
   savedSection.classList.add('hidden')
 }
 
-//Display
+//~~~~~~~~~~~~~~~~~~~~~Display~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function displayMyCover() {
   coverImage.src = userCoverInput.value
   return coverImage.src;
@@ -212,7 +212,7 @@ function displayMyDesc2() {
   return tagLineTwo.innerText;
 }
 
-//Randomizers
+//~~~~~~~~~~~~~~~~~~~~Randomizers~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function randomizeImage() {
   coverImage.src = covers[getRandomIndex(covers)]
   return coverImage.src
@@ -241,7 +241,7 @@ function randomizeImageButton() {
 createRandomCover()
 }
 
-//Push Data
+//~~~~~~~~~~~~~~~~~~~~~~~~Push Data~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function pushCoverArray() {
   covers.push(userCoverInput.value)
   console.log(covers)
