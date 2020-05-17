@@ -1,13 +1,18 @@
 // Create variables targetting the relevant DOM elements here 👇
+//~~~~~~~~~~~Home Cover Variables are here~~~~~~~~~~~~~~~~
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var tagLine = document.querySelector('.tagline')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
+
+//~~~~~~~~~~~These buttons under the `control` class~~~~~~~~~~~
 var randomizeButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedSectButton = document.querySelector('.view-saved-button')
-var makeNewButton = document.querySelector('.make-new-button')
+
+
+
 var homeButton = document.querySelector('.home-button')
 var makeOwnCover = document.querySelector('.make-new-button')
 var formSection = document.querySelector('.form-view')
