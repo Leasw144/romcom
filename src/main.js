@@ -14,7 +14,7 @@ var viewSavedSectButton = document.querySelector('.view-saved-button')
 
 
 var homeButton = document.querySelector('.home-button')
-var makeOwnCover = document.querySelector('.make-new-button')
+var makeOwnCoverButton = document.querySelector('.make-new-button')
 var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
@@ -34,7 +34,7 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
-makeOwnCover.addEventListener('click', goToForm)
+makeOwnCoverButton.addEventListener('click', goToForm)
 viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
