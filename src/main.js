@@ -1,31 +1,34 @@
 // Create variables targetting the relevant DOM elements here 👇
 
-//~~~~~~~~~~~Current Cover Variables are here~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~Current Cover Variables are here~~~~~~
 var coverImage = document.querySelector('.cover-image')
 var coverTitle = document.querySelector('.cover-title')
 var tagLineOne = document.querySelector('.tagline-1')
 var tagLineTwo = document.querySelector('.tagline-2')
 
-//~~~~~~~~~~`control` class buttons~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~`control` class buttons~~~~~~~~~~~~~~~~
 var randomizeButton = document.querySelector('.random-cover-button')
 var saveCoverButton = document.querySelector('.save-cover-button')
 var viewSavedSectButton = document.querySelector('.view-saved-button')
 var homeButton = document.querySelector('.home-button')
-
 var makeOwnCoverButton = document.querySelector('.make-new-button')
 
-//~~~~~~~~~~~Sections~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~Sections~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var formSection = document.querySelector('.form-view')
 var homeSection = document.querySelector('.home-view')
 var savedSection = document.querySelector('.saved-view')
-var hidden = document.querySelector('.hidden')
+
+//~~~~~~~~~~~Form specific variables~~~~~~~~~~~~~
 var makeNewCover = document.querySelector('.create-new-book-button')
 var userCoverInput = document.querySelector('.user-cover')
 var userTitleInput = document.querySelector('.user-title')
 var userDesc1 = document.querySelector('.user-desc1')
 var userDesc2 = document.querySelector('.user-desc2')
 
+//~~~~~~~~~~~Misc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var hidden = document.querySelector('.hidden')
 var currentCover;
+
 
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover)
@@ -35,6 +38,7 @@ viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
 saveCoverButton.addEventListener('click', saveCover)
+
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -63,7 +67,7 @@ function saveCover() {
 
 function checkForDuplicates(){
   for (var i = 0; i < savedCovers.length; i++){
-    if (currentCover.id === savedCovers[i].id){
+    if (currentCover === savedCovers[i]){
       return alert("You've already saved this cover!")
     } 
   }
