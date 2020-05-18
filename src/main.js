@@ -30,7 +30,6 @@ var userDesc2 = document.querySelector('.user-desc2')
 var hidden = document.querySelector('.hidden')
 var currentCover;
 
-
 // Add your event listeners here 👇
 window.addEventListener('load', createRandomCover)
 randomizeButton.addEventListener('click', randomizeImageButton)
@@ -39,7 +38,6 @@ viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
 saveCoverButton.addEventListener('click', saveCover)
-
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -67,13 +65,11 @@ function saveCover() {
   renderSavedCovers();
 }
 
-
-
 function checkForDuplicates(){
   for (var i = 0; i < savedCovers.length; i++){
     if (currentCover === savedCovers[i]){
       return false
-    } 
+    }
   }
   savedCovers.push(currentCover);
 }
@@ -82,7 +78,7 @@ function renderSavedCovers() {
   var duplicate = checkForDuplicates();
   if(duplicate === false) {
     return alert('You\'ve already saved this!!!')
-  } else { 
+  } else {
     for(var i = 0; i < savedCovers.length; i++) {
       var toBePrinted = `<section class="mini-cover">
           <img class="cover-image" src="${savedCovers[i].cover}">
@@ -92,22 +88,9 @@ function renderSavedCovers() {
               <img class="overlay" src="./assets/overlay.png">
           </section>`
     }
-    
-  } 
-  savedCoversDisplaySect.insertAdjacentHTML('afterbegin', 
+  }
+  savedCoversDisplaySect.insertAdjacentHTML('afterbegin',
   toBePrinted)
-  //needs to access savedCovers array,
-  //display all of the saved covers
-  //but it needs to have the class of mini-covers 
-
-}
-
-function showSaveCover() {
-  //when a user clicks on the saved cover button, these two things will happen
-  ////1. it gets pushed to the savedCovers array in data.js.
-  ////2. the poster gets replicated and placed in the savedCovers section (.adjacentHMTL?)
-  ////2a. Consider using css classes of mini-cover and applying it to the covers in the saved cover section
-
 }
 
 function displayInputs() {
@@ -208,7 +191,6 @@ function showHomeSect() {
   hideHomeButton();
   showRandomizeButton();
   showSaveCoverButton();
-  //should reveal saved button feature
 }
 
 function showFormSect() {
