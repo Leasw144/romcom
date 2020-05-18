@@ -38,6 +38,7 @@ viewSavedSectButton.addEventListener('click', goToSaved)
 homeButton.addEventListener('click', goToHome)
 makeNewCover.addEventListener('click', makeFormCover)
 saveCoverButton.addEventListener('click', saveCover)
+savedCoversDisplaySect.addEventListener('dblclick', eraseDis)
 
 // Create your event handlers and other functions here 👇
 function createRandomCover() {
@@ -48,6 +49,9 @@ function createRandomCover() {
    randomizeTag2()
   )
   return currentCover
+}
+function removeSavedCover () {
+
 }
 
 function makeFormCover() {
@@ -61,7 +65,6 @@ function makeFormCover() {
 }
 
 function saveCover() {
-  // checkForDuplicates();
   renderSavedCovers();
 }
 
@@ -72,6 +75,11 @@ function checkForDuplicates(){
     }
   }
   savedCovers.push(currentCover);
+}
+
+function eraseDis (event) {
+  var target = event.target.parentNode
+  savedCoversDisplaySect.removeChild(target)
 }
 
 function renderSavedCovers() {
@@ -91,6 +99,14 @@ function renderSavedCovers() {
   }
   savedCoversDisplaySect.insertAdjacentHTML('afterbegin',
   toBePrinted)
+}
+
+function addDelete () {
+
+
+}
+
+function showSaveCover() {
 }
 
 function displayInputs() {
@@ -116,7 +132,6 @@ function makeUserCoverObj() {
   )
   return currentCover
 }
-
 
 function goToForm() {
   showFormSect();
@@ -191,6 +206,7 @@ function showHomeSect() {
   hideHomeButton();
   showRandomizeButton();
   showSaveCoverButton();
+  //should reveal saved button feature
 }
 
 function showFormSect() {
