@@ -2,10 +2,10 @@
 ---
 # Exploring Class Constructors and HTML Elements:
 > A JavaScript project by Linus Leas and Jeff Woltjen
->(Project webpage) (https://jwoltjen.github.io/romcom/)
+>(Project webpage)
 ---
 
-![alt text] (https://turingschool.slack.com/files/URRHC6JJW/F01455JA7GR/screen_shot_2020-05-16_at_2.02.49_pm.png)
+![alt text](https://imgur.com/JmlG8bj)
 
 ##Introduction
 
@@ -13,31 +13,48 @@ As part of the Turing School of Software and Design's Front-End Module One curri
 
 ##Features
 
-Randomize Cover
-<a href="http://recordit.co/" target="https://recordit.co/4YrD3EsLRr">**Recordit**</a>
+1. Randomize Cover
 
-Make Your Own Covers
-<a href="http://recordit.co/" target="https://recordit.co/fkeTODu4be">**Recordit**</a>
+![Recordit GIF](http://g.recordit.co/4YrD3EsLRr.gif)
 
-Saving Unique covers
-<a href="http://recordit.co/" target="https://recordit.co/CZgJedT4sI"> **Recordit**</a> 
+Using a constructor function, The Randomize Cover function will generate a new cover from the Cover class, which consists of four properties:
+''* The cover image
+''* The title
+''* The first descriptor
+''* The second descriptor
+
+2. Make Your Own Covers
+
+![Recordit GIF](http://g.recordit.co/fkeTODu4be.gif)
+
+Using the Cover class, the Make My Own Cover function will grab input from any image, using .src and .value, while title, descriptor one and descriptor two take user input and display that input using .value and .innerText. Together, these inputs are then displayed on the sreen.
+
+3. Saving Unique Covers
+
+![Recordit GIF](http://g.recordit.co/CZgJedT4sI.gif)
+
+The Save Cover function checks for duplicates within the savedCovers array. If there are no duplicates, it will push the saved cover into the savedCovers array, and display the associated data onto the Saved Covers Section. If the cover has already been saved, it will alert the user.
 
 ##Core Concepts
 
-Class Constructors
+1. Class Constructors
 
-querySelector
+2. querySelector
 
-Event listeners
+3. Event listeners
 
-Looping through arrays
+4. Looping through arrays
 
-Accessing data through arrays
+5. Accessing data through arrays
+
+6. .src, .value, and .innerText
 
 ###About the Developers
 
-[Click here to access the project's repository](https://github.com/Leasw144/romcom)
+[Project repository](https://github.com/Leasw144/romcom)
+[Linus's Github page](https://github.com/Leasw144)
+[Jeff's Github page](https://github.com/JWoltjen)
 
 ###Acknowledgements
 
-We would like to acknowledge our Module One instructors, [Leta Keane] (https://github.com/letakeane), [Scott Ertmer] (https://github.com/sertmer), and [Casey Delavalle] (https://github.com/cbdallavalle) for their assistance and guidance through these core JavaScript concepts, as well as the other members of 2005FE cohort, who have made this difficult journey collegial, supportive, and inclusive.
+We would like to acknowledge our Module One instructors, [Leta Keane](https://github.com/letakeane), [Scott Ertmer](https://github.com/sertmer), and [Casey Delavalle](https://github.com/cbdallavalle) for their assistance and guidance through these core JavaScript concepts, as well as the other members of 2005FE cohort, who have made this difficult journey collegial, supportive, and inclusive.
