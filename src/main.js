@@ -101,14 +101,6 @@ function renderSavedCovers() {
   toBePrinted)
 }
 
-function addDelete () {
-
-
-}
-
-function showSaveCover() {
-}
-
 function displayInputs() {
   displayMyCover();
   displayMyTitle();
